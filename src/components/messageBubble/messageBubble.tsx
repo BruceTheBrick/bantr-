@@ -1,15 +1,25 @@
-﻿import React from 'react';
+﻿import React from "react";
+import type ChatMessage from "../../models/ChatMessage.ts";
+import "./messageBubble.css";
 
 interface MessageBubbleProps {
-    message: string;
-    isCurrentUserAuthor: boolean;
+  chatMessage: ChatMessage;
 }
 
 function MessageBubble(props: MessageBubbleProps) {
-    const style = {}
-    return (
-        <div></div>
-    );
+  const className = props.chatMessage.isCurrentUserAuthor ? "author" : "";
+  return (
+    <div className={"messageBubble " + className}>
+      <p
+        style={{
+          display: "inline-block",
+          margin: 0,
+        }}
+      >
+        {props.chatMessage.message}
+      </p>
+    </div>
+  );
 }
 
 export default MessageBubble;

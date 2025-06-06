@@ -1,0 +1,22 @@
+﻿.chat-window{
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-messages{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    margin-bottom: var(--base);
+    overflow-y: auto;
+    padding: var(--x-small)
+}
+
+.chat-messages > *{
+    margin-bottom: var(--small);
+}
+
+.chat-input-form{
+    justify-self: flex-end;
+}

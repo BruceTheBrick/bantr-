@@ -1,0 +1,44 @@
+﻿.messageBubble {
+    border-radius: var(--x-small);
+    padding: var(--small);
+    color: white;
+    flex-shrink: 1;
+    text-align: left;
+    align-self: flex-start;
+    background-color: limegreen;
+    margin-right: var(--large);
+}
+
+/*Style first div of each subgroup*/
+.messageBubble:not(.author) + .messageBubble.author,
+.messageBubble.author + .messageBubble:not(.author)
+{
+    border-radius: var(--base) var(--base) var(--x-small) var(--x-small);
+}
+
+/*Style last div of each subgroup*/
+.messageBubble.author:has(+ .messageBubble:not(.author)),
+.messageBubble:not(.author):has(+ .messageBubble.author) {
+    border-radius: var(--x-small) var(--x-small) var(--base) var(--base);
+}
+
+/* Also style the very last message since it won't have a next group */
+.messageBubble:last-child {
+    border-radius: var(--x-small) var(--x-small) var(--base) var(--base);
+}
+
+/* Single messages in a group (no same-type messages before or after) */
+.messageBubble.author:not(:has(+ .author)):not(.author + .author),
+.messageBubble:not(.author):not(:has(+ :not(.author))):not(:not(.author) + :not(.author)) {
+    border-radius: var(--base);
+    /* Add your specific styles for single messages here */
+}
+
+
+.messageBubble.author{
+    text-align: right;
+    align-self: flex-end;
+    background-color: dodgerblue;
+    margin-right: unset;
+    margin-left: var(--large);
+}
